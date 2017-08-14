@@ -1,10 +1,14 @@
+
+// Output should be:
+// It is Tuesday, July 18th 2017, 3:07:48 pm.
+// It is the 199th day of the year.
+// It is 54468 seconds into the day.
+// It is during Daylight Savings Time.
+// It is not a leap year.
+
 var moment = require('moment');
 var current_time = moment().format();
 var current_date_time = moment().format('MMMM Do YYYY, h:mm:ss a');
-//var new_year = moment([2017, 1, 1]);
-//var today = moment.calendar();
-//moment.relativeTimeThreshold('d', 365);
-//moment.relativeTimeThreshold('s', 80,000);
 var day_of_year = moment().dayOfYear();
   function ordinal(number) {
     switch (number) {
@@ -25,16 +29,8 @@ var day_of_year = moment().dayOfYear();
     }
   }
 
-  //seconds_of_day = moment() - moment().startOf('day').fromNow();
-  //seconds = moment().format("h:mm:ss a");
-  seconds = ((moment().hours() * 3600) + (moment().minutes() * 60) +  moment().seconds());
-
-  // Current timestamp - timestamp at
-  //seconds_of_day = (moment().unix() - moment())
-
-
-
-  daylight_savings = moment().isDST();
+  var seconds = ((moment().hours() * 3600) + (moment().minutes() * 60) +  moment().seconds());
+var  daylight_savings = moment().isDST();
   if (daylight_savings === true) {
     daylight_savings = "It is during Daylight Savings Time."
   }
@@ -42,30 +38,16 @@ var day_of_year = moment().dayOfYear();
     daylight_savings = "It is not during Daylight Savings Time."
   }
 
-  leap_year = moment().isLeapYear();
+var  leap_year = moment().isLeapYear();
   if (leap_year === true) {
     leap_year = "It is a leap year."
   }
   else {
     leap_year = "It is not a leap year."
   }
-//moment().startOf('year').fromNow();
-
-
-// Output should be:
-// It is Tuesday, July 18th 2017, 3:07:48 pm.
-// It is the 199th day of the year.
-// It is 54468 seconds into the day.
-// It is during Daylight Savings Time.
-// It is not a leap year.
 
 console.log(`It is ` + current_date_time + '.');
 console.log('it is the ' + ordinal(day_of_year) + " day of the year.");
 console.log("It is " + seconds + " into the day.");
 console.log(daylight_savings);
 console.log(leap_year);
-
-
-//console.log('New year is ' + new_year);
-//console.log(`Today is ` + today);
-//console.log(`It is `current_date_time);
