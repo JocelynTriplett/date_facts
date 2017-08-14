@@ -7,6 +7,7 @@
 // It is not a leap year.
 
 var moment = require('moment');
+const chalk = require('chalk');
 var current_time = moment().format();
 var current_date_time = moment().format('MMMM Do YYYY, h:mm:ss a');
 var day_of_year = moment().dayOfYear();
@@ -32,22 +33,22 @@ var day_of_year = moment().dayOfYear();
   var seconds = ((moment().hours() * 3600) + (moment().minutes() * 60) +  moment().seconds());
 var  daylight_savings = moment().isDST();
   if (daylight_savings === true) {
-    daylight_savings = "It is during Daylight Savings Time."
+    daylight_savings = "It " + chalk.green("is ") + "during Daylight Savings Time."
   }
   else {
-    daylight_savings = "It is not during Daylight Savings Time."
+    daylight_savings = "It " + chalk.green("is not ") + "during Daylight Savings Time."
   }
 
 var  leap_year = moment().isLeapYear();
   if (leap_year === true) {
-    leap_year = "It is a leap year."
+    leap_year = "It " + chalk.red("is ") + "a leap year."
   }
   else {
-    leap_year = "It is not a leap year."
+    leap_year = "It " + chalk.red("is not ") + "a leap year."
   }
 
-console.log(`It is ` + current_date_time + '.');
-console.log('it is the ' + ordinal(day_of_year) + " day of the year.");
-console.log("It is " + seconds + " into the day.");
+console.log(`It is ` + chalk.blue(current_date_time) + '.');
+console.log('it is the ' + chalk.magenta(ordinal(day_of_year)) + " day of the year.");
+console.log("It is " + chalk.cyan(seconds) + " into the day.");
 console.log(daylight_savings);
 console.log(leap_year);
