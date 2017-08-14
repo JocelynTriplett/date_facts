@@ -24,8 +24,15 @@ var day_of_year = moment().dayOfYear();
         return number + 'th';
     }
   }
-  moment.relativeTimeThreshold('s', 100,000);
-  seconds_of_day = moment().startOf('day').fromNow();
+
+  //seconds_of_day = moment() - moment().startOf('day').fromNow();
+  //seconds = moment().format("h:mm:ss a");
+  seconds = ((moment().hours() * 3600) + (moment().minutes() * 60) +  moment().seconds());
+
+  // Current timestamp - timestamp at
+  //seconds_of_day = (moment().unix() - moment())
+
+
 
   daylight_savings = moment().isDST();
   if (daylight_savings === true) {
@@ -54,9 +61,10 @@ var day_of_year = moment().dayOfYear();
 
 console.log(`It is ` + current_date_time + '.');
 console.log('it is the ' + ordinal(day_of_year) + " day of the year.");
-console.log("It is " + seconds_of_day + " into the day.");
+console.log("It is " + seconds + " into the day.");
 console.log(daylight_savings);
 console.log(leap_year);
+
 
 //console.log('New year is ' + new_year);
 //console.log(`Today is ` + today);
