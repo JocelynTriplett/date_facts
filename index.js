@@ -26,15 +26,22 @@ var day_of_year = moment().dayOfYear();
   }
   moment.relativeTimeThreshold('s', 100,000);
   seconds_of_day = moment().startOf('day').fromNow();
-  daylight_savings = moment().isDST();
 
-  if (daylight_savings === false) {
+  daylight_savings = moment().isDST();
+  if (daylight_savings === true) {
     daylight_savings = "It is during Daylight Savings Time."
   }
   else {
     daylight_savings = "It is not during Daylight Savings Time."
   }
 
+  leap_year = moment().isLeapYear();
+  if (leap_year === true) {
+    leap_year = "It is a leap year."
+  }
+  else {
+    leap_year = "It is not a leap year."
+  }
 //moment().startOf('year').fromNow();
 
 
@@ -49,6 +56,7 @@ console.log(`It is ` + current_date_time + '.');
 console.log('it is the ' + ordinal(day_of_year) + " day of the year.");
 console.log("It is " + seconds_of_day + " into the day.");
 console.log(daylight_savings);
+console.log(leap_year);
 
 //console.log('New year is ' + new_year);
 //console.log(`Today is ` + today);
